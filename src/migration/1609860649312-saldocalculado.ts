@@ -38,7 +38,7 @@ export class saldocalculado1609860649312 implements MigrationInterface {
           {
             name: 'fk_conta_corrente_saldo',
             columnNames: ['contacorrente_id'],
-            referencedTableName: 'contacorrente',
+            referencedTableName: 'contacorrentes',
             referencedColumnNames: ['id'],
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',

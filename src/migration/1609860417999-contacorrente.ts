@@ -8,7 +8,7 @@ export class contacorrente1609860417999 implements MigrationInterface {
 
     await queryRunner.createTable(
       new Table({
-        name: 'contacorrente',
+        name: 'contacorrentes',
         columns: [
           {
             name: 'id',
@@ -30,6 +30,12 @@ export class contacorrente1609860417999 implements MigrationInterface {
             default: 0,
           },
           {
+            name: 'is_ativo',
+            type: 'boolean',
+            isNullable: false,
+            default: true
+          },
+          {
             name: 'created_at',
             type: 'date',
             isNullable: true,
@@ -45,6 +51,6 @@ export class contacorrente1609860417999 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('contacorrente');
+    await queryRunner.dropTable('contacorrentes');
   }
 }

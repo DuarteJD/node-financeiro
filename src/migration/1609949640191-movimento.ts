@@ -1,13 +1,13 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class movimento1609861024868 implements MigrationInterface {
+export class movimento1609949640191 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
       await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
 
     await queryRunner.createTable(
       new Table({
-        name: 'movimento',
+        name: 'movimentos',
         columns: [
           {
             name: 'id',
@@ -18,12 +18,35 @@ export class movimento1609861024868 implements MigrationInterface {
           },
           {
             name: 'data',
-            type: 'timestamp with time zone',
+            type: 'date',
             isNullable: false,
           },
           {
             name: 'contacorrente_id',
             type: 'uuid',
+            isNullable: true,
+          },
+          {
+            name: 'categoria_id',
+            type: 'uuid',
+            isNullable: true,
+          },
+          {
+            name: 'tipo',
+            type: 'varchar',
+            isNullable: false,
+            default: "D",
+            comment: 'D=Débito C=Crédito',
+          },
+          {
+            name: 'is_pago',
+            type: 'boolean',
+            isNullable: false,
+            default: true,
+          },
+          {
+            name: 'quantidade_parcelas',
+            type: 'number',
             isNullable: true,
           },
           {
@@ -40,6 +63,12 @@ export class movimento1609861024868 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'is_ativo',
+            type: 'boolean',
+            isNullable: false,
+            default: true
+          },
+          {
             name: 'created_at',
             type: 'date',
             isNullable: true,
@@ -54,17 +83,25 @@ export class movimento1609861024868 implements MigrationInterface {
           {
             name: 'fk_conta_corrente_movimento',
             columnNames: ['contacorrente_id'],
-            referencedTableName: 'contacorrente',
+            referencedTableName: 'contacorrentes',
             referencedColumnNames: ['id'],
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
-          }
+          },
+          {
+            name: 'fk_categoria_movimento',
+            columnNames: ['categoria_id'],
+            referencedTableName: 'categorias',
+            referencedColumnNames: ['id'],
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE',
+          },
         ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('movimento');
+    await queryRunner.dropTable('movimentos');
   }
 }
