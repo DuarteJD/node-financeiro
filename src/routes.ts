@@ -1,9 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+
+import contasRouter from './routes/contas.route';
 
 const routes = Router();
 
-routes.get('/', (request: Request, response: Response) => {
-  return response.json({message: "Hellow Word"})
-})
+routes.use('/contas', contasRouter);
 
 export default routes;
