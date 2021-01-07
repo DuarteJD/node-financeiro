@@ -22,7 +22,7 @@ export class movimento1609949640191 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'contacorrente_id',
+            name: 'conta_id',
             type: 'uuid',
             isNullable: true,
           },
@@ -81,9 +81,9 @@ export class movimento1609949640191 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: 'fk_conta_corrente_movimento',
-            columnNames: ['contacorrente_id'],
-            referencedTableName: 'contacorrentes',
+            name: 'fk_conta_movimento',
+            columnNames: ['conta_id'],
+            referencedTableName: 'contas',
             referencedColumnNames: ['id'],
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
