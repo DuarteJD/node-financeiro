@@ -22,7 +22,7 @@ export class saldocalculado1609860649312 implements MigrationInterface {
             isNullable: false,
           },
           {
-            name: 'contacorrente_id',
+            name: 'conta_id',
             type: 'uuid',
             isNullable: false,
           },

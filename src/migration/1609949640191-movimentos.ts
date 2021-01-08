@@ -35,7 +35,6 @@ export class movimento1609949640191 implements MigrationInterface {
             name: 'tipo',
             type: 'varchar',
             isNullable: false,
-            default: "D",
             comment: 'D=Débito C=Crédito',
           },
           {
@@ -46,7 +45,7 @@ export class movimento1609949640191 implements MigrationInterface {
           },
           {
             name: 'quantidade_parcelas',
-            type: 'number',
+            type: 'int',
             isNullable: true,
           },
           {

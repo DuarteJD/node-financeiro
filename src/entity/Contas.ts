@@ -17,7 +17,7 @@ export class Contas {
   @Column()
   saldo_inicial: number;
 
-  @Column()
+  @Column({default: true })
   is_ativo: boolean;
 
   @CreateDateColumn()
