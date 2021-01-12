@@ -7,7 +7,7 @@ interface Response {
   id: string;
 }
 
-class ContasServiceExcluir {
+class ContasServiceCancelar {
   public async execute({ id }: Response) : Promise<void> {
 
     const repository = getRepository(Contas)
@@ -19,7 +19,7 @@ class ContasServiceExcluir {
     }
 
     const linha = await repository.update(id, {
-      is_ativo:false
+      is_ativo : !registro.is_ativo
     })
 
     if(!linha.affected) {
@@ -28,4 +28,4 @@ class ContasServiceExcluir {
   }
 }
 
-export default ContasServiceExcluir;
+export default ContasServiceCancelar;

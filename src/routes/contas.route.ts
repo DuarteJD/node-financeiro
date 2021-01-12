@@ -9,6 +9,6 @@ routes.get('/', controlador.all);
 routes.get('/:id', controlador.one);
 routes.post('/', controlador.save);
 routes.put('/:id', controlador.update);
-routes.delete('/:id', controlador.remove);
+routes.delete('/:id', controlador.cancel);
 
 export default routes;

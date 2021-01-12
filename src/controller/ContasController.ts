@@ -1,7 +1,10 @@
 import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 import { Contas } from '../entity/Contas';
-import ContasServiceExcluir from "../services/ContasServiceExcluir";
+
+import ContasServiceCriar from "../services/ContasServiceCriar";
+import ContasServiceAtualizar from "../services/ContasServiceAtualizar";
+import ContasServiceCancelar from "../services/ContasServiceCancelar";
 
 
 export default class ContasController {
@@ -13,13 +16,15 @@ export default class ContasController {
 
   public async one(request: Request, response: Response): Promise<Response> {
     const id = request.params.id
-    const umRegistro = await getRepository(Contas).findOne(id)
+    const umRegistro = await getRepository(Contas).findOneOrFail(id)
     return response.json(umRegistro)
   }
 
   async save(request: Request, response: Response): Promise<Response> {
     const corpo = request.body
-    const registro = await getRepository(Contas).save(corpo)
+    const service = new ContasServiceCriar()
+
+    const registro = service.execute(corpo)
     return response.json(registro)
   }
 
@@ -27,24 +32,18 @@ export default class ContasController {
 
     const id = request.params.id
     const corpo = request.body
-    const linhas = await getRepository(Contas).update(id, corpo)
-    if(!linhas.affected) {
-      return response.status(404).json({ message: 'Registro não encontrado!'})
-    }
+    const service = new ContasServiceAtualizar()
 
-    const registro = await getRepository(Contas).findOne(id)
+    const registro = await service.execute(id, corpo)
     return response.json(registro)
   }
 
-  async remove(request: Request, response: Response): Promise<Response> {
+  async cancel(request: Request, response: Response): Promise<Response> {
 
     const id = request.params.id
-    const remover = await getRepository(Contas).findOne(id)
-    if(!remover) {
-      return response.status(404).json({ message: 'Registro não encontrado!'})
-    }
+    const service = new ContasServiceCancelar()
+    await service.execute({ id })
 
-    await getRepository(Contas).remove(remover)
     return response.status(204).json()
   }
 }
