@@ -24,7 +24,7 @@ export default class CategoriasController {
     const corpo = request.body
     const service = new CategoriasServiceCriar()
 
-    const registro = service.execute(corpo)
+    const registro = await service.execute(corpo)
     return response.json(registro)
   }
 

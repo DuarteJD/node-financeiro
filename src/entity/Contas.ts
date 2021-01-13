@@ -19,10 +19,4 @@ export class Contas {
 
   @Column({default: true })
   is_ativo: boolean;
-
-  @CreateDateColumn()
-  created_at: Date;
-
-  @UpdateDateColumn()
-  updated_at: Date;
 }

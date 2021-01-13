@@ -24,7 +24,7 @@ export default class ContasController {
     const corpo = request.body
     const service = new ContasServiceCriar()
 
-    const registro = service.execute(corpo)
+    const registro = await service.execute(corpo)
     return response.json(registro)
   }
 
