@@ -35,16 +35,6 @@ export class contas1609860417999 implements MigrationInterface {
             isNullable: false,
             default: true
           },
-          {
-            name: 'created_at',
-            type: 'date',
-            isNullable: true,
-          },
-          {
-            name: 'updated_at',
-            type: 'date',
-            isNullable: true,
-          },
         ],
       }),
     );

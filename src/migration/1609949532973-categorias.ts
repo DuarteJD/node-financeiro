@@ -28,16 +28,6 @@ export class categorias1609949532973 implements MigrationInterface {
               isNullable: false,
               default: true
             },
-            {
-              name: 'created_at',
-              type: 'date',
-              isNullable: true,
-            },
-            {
-              name: 'updated_at',
-              type: 'date',
-              isNullable: true,
-            },
           ],
         }),
       );

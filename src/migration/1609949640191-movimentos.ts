@@ -67,16 +67,6 @@ export class movimento1609949640191 implements MigrationInterface {
             isNullable: false,
             default: true
           },
-          {
-            name: 'created_at',
-            type: 'date',
-            isNullable: true,
-          },
-          {
-            name: 'updated_at',
-            type: 'date',
-            isNullable: true,
-          },
         ],
         foreignKeys: [
           {
