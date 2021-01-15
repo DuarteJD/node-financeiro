@@ -12,6 +12,9 @@ export class Categorias {
   @Column()
   nome: string;
 
+  @Column()
+  tipo: number;
+
   @Column({default: true })
   is_ativo: boolean;
 }
