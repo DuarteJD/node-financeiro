@@ -23,6 +23,11 @@ export class categorias1609949532973 implements MigrationInterface {
               isNullable: false,
             },
             {
+              name: 'tipo',
+              type: 'int',
+              isNullable: false,
+            },
+            {
               name: 'is_ativo',
               type: 'boolean',
               isNullable: false,
