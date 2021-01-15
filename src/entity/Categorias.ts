@@ -13,7 +13,7 @@ export class Categorias {
   nome: string;
 
   @Column()
-  tipo: number;
+  tipo: string;
 
   @Column({default: true })
   is_ativo: boolean;

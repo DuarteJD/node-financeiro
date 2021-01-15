@@ -24,7 +24,8 @@ export class categorias1609949532973 implements MigrationInterface {
             },
             {
               name: 'tipo',
-              type: 'int',
+              type: 'varchar',
+              comment: 'D=Débito C=Crédito',
               isNullable: false,
             },
             {
