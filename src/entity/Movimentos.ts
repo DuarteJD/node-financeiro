@@ -19,7 +19,7 @@ export class Movimentos {
   categoria_id: number;
 
   @Column()
-  tipo: string;
+  tipo: 'C' | 'D';
 
   @Column({ default : true})
   is_pago: boolean;
@@ -30,7 +30,7 @@ export class Movimentos {
   @Column()
   descricao: string;
 
-  @Column()
+  @Column('decimal')
   valor: number;
 
   @Column({ default : true })

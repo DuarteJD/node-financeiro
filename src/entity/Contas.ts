@@ -12,7 +12,7 @@ export class Contas {
   @Column()
   nome: string;
 
-  @Column()
+  @Column('decimal')
   saldo_inicial: number;
 
   @Column({default: true })

@@ -18,7 +18,7 @@ export class saldocalculado1609860649312 implements MigrationInterface {
           },
           {
             name: 'data',
-            type: 'timestamp with time zone',
+            type: 'date',
             isNullable: false,
           },
           {

@@ -4,17 +4,17 @@ import {
   Column,
 } from "typeorm";
 
-@Entity('categorias')
-export class Categorias {
+@Entity('saldocalculado')
+export class SaldosCalculado {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  nome: string;
+  data: Date;
 
   @Column()
-  tipo: 'C' | 'D';
+  conta_id: number;
 
-  @Column({default: true })
-  is_ativo: boolean;
+  @Column('decimal')
+  saldo: number;
 }
