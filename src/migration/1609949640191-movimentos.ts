@@ -56,7 +56,7 @@ export class movimento1609949640191 implements MigrationInterface {
           {
             name: 'valor',
             type: 'decimal',
-            precision: 7,
+            precision: 11,
             scale: 2,
             default: 0,
             isNullable: false,

@@ -30,6 +30,12 @@ export class contas1609860417999 implements MigrationInterface {
             default: 0,
           },
           {
+            name: 'is_cartao',
+            type: 'boolean',
+            isNullable: false,
+            default: false
+          },
+          {
             name: 'is_ativo',
             type: 'boolean',
             isNullable: false,

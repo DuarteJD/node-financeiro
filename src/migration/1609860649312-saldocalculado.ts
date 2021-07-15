@@ -29,7 +29,7 @@ export class saldocalculado1609860649312 implements MigrationInterface {
           {
             name: 'saldo',
             type: 'decimal',
-            precision: 7,
+            precision: 11,
             scale: 2,
             default: 0,
           },
