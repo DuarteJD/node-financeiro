@@ -102,20 +102,15 @@ export class movimento1609949640191 implements MigrationInterface {
             onUpdate: 'CASCADE',
             onDelete: 'CASCADE',
           },
-          {
-            name: 'fk_movimento_recorrente_id',
-            columnNames: ['recorrente_id'],
-            referencedTableName: 'recorrentes',
-            referencedColumnNames: ['id'],
-            onUpdate: 'CASCADE',
-            onDelete: 'CASCADE',
-          },
         ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey("movimentos", 'fk_movimento_conta_id');
+    await queryRunner.dropForeignKey("movimentos", 'fk_movimento_conta_id_transferencia');
+    await queryRunner.dropForeignKey("movimentos", 'fk_movimento_categoria_id');
     await queryRunner.dropTable('movimentos');
   }
 }
