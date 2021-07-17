@@ -30,10 +30,20 @@ export class contas1609860417999 implements MigrationInterface {
             default: 0,
           },
           {
+            name: 'data_saldo',
+            type: 'date',
+            isNullable: false,
+          },
+          {
             name: 'is_cartao',
             type: 'boolean',
             isNullable: false,
             default: false
+          },
+          {
+            name: 'melhor_dia_compra',
+            type: 'int',
+            isNullable: true,
           },
           {
             name: 'is_ativo',

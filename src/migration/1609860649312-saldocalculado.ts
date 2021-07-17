@@ -36,7 +36,7 @@ export class saldocalculado1609860649312 implements MigrationInterface {
         ],
         foreignKeys: [
           {
-            name: 'fk_conta_saldo',
+            name: 'fk_saldocalculado_contas_id',
             columnNames: ['conta_id'],
             referencedTableName: 'contas',
             referencedColumnNames: ['id'],

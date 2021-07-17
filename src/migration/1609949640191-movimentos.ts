@@ -27,26 +27,23 @@ export class movimento1609949640191 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'transferencia_conta_id',
+            type: 'uuid',
+            isNullable: true,
+            default: null,
+            comment: 'Conta corrente na qual será creditado o valor da transferência'
+          },
+          {
             name: 'categoria_id',
             type: 'uuid',
             isNullable: true,
+            default: null,
           },
           {
             name: 'tipo',
             type: 'varchar',
             isNullable: false,
-            comment: 'D=Débito C=Crédito',
-          },
-          {
-            name: 'is_pago',
-            type: 'boolean',
-            isNullable: false,
-            default: true,
-          },
-          {
-            name: 'quantidade_parcelas',
-            type: 'int',
-            isNullable: true,
+            comment: 'D=Débito C=Crédito T=Transferência',
           },
           {
             name: 'descricao',
@@ -67,10 +64,16 @@ export class movimento1609949640191 implements MigrationInterface {
             isNullable: false,
             default: true
           },
+          {
+            name: 'is_recorrente',
+            type: 'boolean',
+            isNullable: false,
+            default: true
+          },
         ],
         foreignKeys: [
           {
-            name: 'fk_conta_movimento',
+            name: 'fk_movimento_conta_id',
             columnNames: ['conta_id'],
             referencedTableName: 'contas',
             referencedColumnNames: ['id'],
@@ -78,7 +81,15 @@ export class movimento1609949640191 implements MigrationInterface {
             onDelete: 'CASCADE',
           },
           {
-            name: 'fk_categoria_movimento',
+            name: 'fk_movimento_conta_id_transferencia',
+            columnNames: ['transferencia_conta_id'],
+            referencedTableName: 'contas',
+            referencedColumnNames: ['id'],
+            onUpdate: 'CASCADE',
+            onDelete: 'CASCADE',
+          },
+          {
+            name: 'fk_movimento_categoria_id',
             columnNames: ['categoria_id'],
             referencedTableName: 'categorias',
             referencedColumnNames: ['id'],
