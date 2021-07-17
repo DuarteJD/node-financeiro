@@ -3,7 +3,6 @@ import 'express-async-errors'
 import { createConnection } from 'typeorm'
 
 import * as express from "express";
-import * as bodyParser from "body-parser";
 
 createConnection();
 
@@ -23,7 +22,8 @@ declare global {
 
 const app = express()
 
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(routes)
 app.use(errorHandler)
 
