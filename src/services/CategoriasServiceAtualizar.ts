@@ -5,6 +5,7 @@ import TratamentoErros  from "../erros/TratamentoErros";
 interface Request {
   nome?: string;
   is_ativo?: boolean;
+  tipo: 'C' | 'D' | 'T';
 }
 
 class CategoriasServiceAtualizar {
@@ -22,7 +23,7 @@ class CategoriasServiceAtualizar {
       const encontrarNome = await repository.findOne({ where: { nome: data.nome }} )
       if(encontrarNome) {
         if(encontrarNome.id !== id){
-          throw new TratamentoErros('Esta categoria encontra-se cadastrada!', 422)
+          throw new TratamentoErros('Este nome de categoria já encontra-se em uso!', 422)
         }
       }
     }

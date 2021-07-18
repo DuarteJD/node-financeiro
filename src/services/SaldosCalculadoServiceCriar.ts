@@ -5,7 +5,7 @@ import TratamentoDeErros  from "../erros/TratamentoErros";
 
 interface Request {
   data: Date;
-  conta_id: number;
+  conta_id: string;
   saldo: number;
 }
 

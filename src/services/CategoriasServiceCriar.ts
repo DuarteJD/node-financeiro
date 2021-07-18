@@ -6,6 +6,7 @@ import TratamentoDeErros  from "../erros/TratamentoErros";
 interface Request {
   nome: string;
   is_ativo?: boolean;
+  tipo: 'C' | 'D' | 'T';
 }
 
 class CategoriasServiceCriar {

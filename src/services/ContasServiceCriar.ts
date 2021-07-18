@@ -6,7 +6,10 @@ import TratamentoDeErros  from "../erros/TratamentoErros";
 interface Request {
   nome: string;
   saldo_inicial: number;
+  data_saldo?: Date;
+  melhor_dia_compra?: number;
   is_ativo?: boolean;
+  is_cartao?: boolean;
 }
 
 class ContasServiceCriar {

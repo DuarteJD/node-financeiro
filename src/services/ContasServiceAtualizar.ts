@@ -3,9 +3,12 @@ import { Contas } from "../entity/Contas";
 import TratamentoErros  from "../erros/TratamentoErros";
 
 interface Request {
-  nome?: string;
-  saldo_inicial?: number;
+  nome: string;
+  saldo_inicial: number;
+  data_saldo?: Date;
+  melhor_dia_compra?: number;
   is_ativo?: boolean;
+  is_cartao?: boolean;
 }
 
 class ContasServiceAtualizar {
@@ -23,7 +26,7 @@ class ContasServiceAtualizar {
       const encontrarNome = await repository.findOne({ where: { nome: data.nome }} )
       if(encontrarNome) {
         if(encontrarNome.id !== id){
-          throw new TratamentoErros('Esta conta já encontra-se cadastrada!', 422)
+          throw new TratamentoErros('O nome utilizado já encontra-se cadastrado!', 422)
         }
       }
     }
