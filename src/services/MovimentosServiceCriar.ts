@@ -1,17 +1,17 @@
 import { getRepository } from "typeorm";
 import { Movimentos } from '../entity/Movimentos'
 
-
 interface Request {
   data: Date;
-  conta_id: number;
-  categoria_id: number;
-  tipo: 'C' | 'D';
-  is_pago: boolean;
-  quantidade_parcelas: number;
+  conta_id: string;
+  categoria_id?: string;
+  recorrente_id?: string;
+  transferencia_conta_id?: string;
+  tipo: 'C' | 'D' | 'T';
   descricao: string;
   valor: number;
   is_ativo: boolean;
+  is_recorrente?: boolean;
 }
 
 class MovimentosServiceCriar {
