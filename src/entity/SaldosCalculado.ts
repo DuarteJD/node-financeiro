@@ -12,8 +12,8 @@ export class SaldosCalculado {
   @Column()
   data: Date;
 
-  @Column()
-  conta_id: number;
+  @Column('uuid')
+  conta_id: string;
 
   @Column('decimal')
   saldo: number;
