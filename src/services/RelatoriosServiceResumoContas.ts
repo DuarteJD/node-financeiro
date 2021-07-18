@@ -1,4 +1,4 @@
-import { getRepository, LessThanOrEqual } from "typeorm";
+import { getRepository } from "typeorm";
 import { Contas } from "../entity/Contas";
 import { SaldosCalculado } from '../entity/SaldosCalculado'
 
