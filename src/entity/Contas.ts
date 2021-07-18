@@ -12,7 +12,7 @@ export class Contas {
   @Column()
   nome: string;
 
-  @Column()
+  @Column('date')
   data_saldo: Date;
 
   @Column()

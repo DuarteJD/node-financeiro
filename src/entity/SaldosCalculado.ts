@@ -9,7 +9,7 @@ export class SaldosCalculado {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column('date')
   data: Date;
 
   @Column('uuid')

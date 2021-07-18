@@ -3,6 +3,8 @@ import { getRepository } from "typeorm";
 import { Movimentos } from '../entity/Movimentos';
 import TratamentoErros  from "../erros/TratamentoErros";
 
+import SaldosCalculadoServiceCalcular from "../services/SaldosCalculadoServiceCalcular";
+
 interface Response {
   id: string;
 }
@@ -25,6 +27,11 @@ class MovimentosServiceCancelar {
     if(!linha.affected) {
       throw new TratamentoErros('Nenhum registro foi alterado!', 400)
     }
+
+    const service = new SaldosCalculadoServiceCalcular()
+
+    await service.execute(registro.conta_id)
+
   }
 }
 

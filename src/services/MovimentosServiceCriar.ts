@@ -1,6 +1,8 @@
 import { getRepository } from "typeorm";
 import { Movimentos } from '../entity/Movimentos'
 
+import SaldosCalculadoServiceCalcular from "../services/SaldosCalculadoServiceCalcular";
+
 interface Request {
   data: Date;
   conta_id: string;
@@ -22,6 +24,10 @@ class MovimentosServiceCriar {
     const registro = repository.create(data);
 
     await repository.save(registro)
+
+    const service = new SaldosCalculadoServiceCalcular()
+
+    await service.execute(registro.conta_id)
 
     return registro
   }

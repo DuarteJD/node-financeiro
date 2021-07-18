@@ -2,6 +2,8 @@ import { getRepository } from "typeorm";
 import { Movimentos } from "../entity/Movimentos";
 import TratamentoErros  from "../erros/TratamentoErros";
 
+import SaldosCalculadoServiceCalcular from "../services/SaldosCalculadoServiceCalcular";
+
 interface Request {
   data?: Date;
   conta_id?: string;
@@ -33,6 +35,10 @@ class MovimentosServiceAtualizar {
     }
 
     const registro = await repository.findOneOrFail(id)
+
+    const service = new SaldosCalculadoServiceCalcular()
+
+    await service.execute(registro.conta_id)
 
     return registro
 

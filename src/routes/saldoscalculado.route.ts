@@ -6,5 +6,6 @@ const routes = Router();
 const controlador = new SaldosCalculadoController();
 
 routes.get('/', controlador.all);
+routes.post('/', controlador.compute);
 
 export default routes;
