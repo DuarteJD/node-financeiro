@@ -1,13 +1,10 @@
 import dotenv from 'dotenv';
 import "reflect-metadata";
 import 'express-async-errors'
-import { createConnection } from 'typeorm'
 
 import express from "express";
 
 dotenv.config();
-
-createConnection();
 
 import routes from "./routes";
 import errorHandler from './erros/handler';

@@ -9,13 +9,13 @@ module.exports = {
    "synchronize": false,
    "logging": false,
    "entities": [
-      "dist/entity/**/*.js"
+      process.env.DEV_MODE === 1 ? 'src/entity/**/*.ts' : 'dist/entity/**/*.js'
    ],
    "migrations": [
-      "dist/migration/**/*.js"
+    process.env.DEV_MODE === 1 ? 'src/migration/**/*.ts' : 'dist/migration/**/*.js'
    ],
    "subscribers": [
-      "dist/subscriber/**/*.js"
+    process.env.DEV_MODE === 1 ? 'src/subscriber/**/*.ts' : 'dist/subscriber/**/*.js'
    ],
    "cli": {
       "entitiesDir": "src/entity",
