@@ -6,7 +6,9 @@ module.exports = {
   "synchronize": false,
   "logging": false,
   "extra": {
-    "rejectUnauthorized": false
+    "ssl": {
+      "rejectUnauthorized": false
+    }
   },
   "entities": [
     process.env.DEV_MODE === 1 ? 'src/entity/**/*.ts' : 'dist/src/entity/**/*.js'
