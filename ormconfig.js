@@ -18,3 +18,5 @@ module.exports = {
       "subscribersDir": "src/subscriber"
    }
 }
+
+console.log(process.env.DEV_MODE = 1 ? "src/entity/**/*.ts" : "dist/entity/**/*.ts");
