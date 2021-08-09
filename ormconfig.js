@@ -6,7 +6,6 @@ module.exports = {
   "synchronize": false,
   "logging": false,
   "extra": {
-    "ssl": true,
     "rejectUnauthorized": false
   },
   "entities": [
