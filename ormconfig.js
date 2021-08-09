@@ -4,13 +4,13 @@ module.exports = {
    "synchronize": false,
    "logging": false,
    "entities": [
-      "dist/entity/**/*.ts"
+      "dist/entity/**/*.js"
    ],
    "migrations": [
-      "dist/migration/**/*.ts"
+      "dist/migration/**/*.js"
    ],
    "subscribers": [
-      "dist/subscriber/**/*.ts"
+      "dist/subscriber/**/*.js"
    ],
    "cli": {
       "entitiesDir": "src/entity",
