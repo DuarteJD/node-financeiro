@@ -4,13 +4,13 @@ module.exports = {
    "synchronize": false,
    "logging": false,
    "entities": [
-      process.env.DEV_MODE = 0 ? "dist/entity/**/*.ts" : "src/entity/**/*.ts"
+      "dist/entity/**/*.ts"
    ],
    "migrations": [
-      process.env.DEV_MODE = 0 ? "dist/migration/**/*.ts" : "src/migration/**/*.ts"
+      "dist/migration/**/*.ts"
    ],
    "subscribers": [
-      process.env.DEV_MODE = 0 ? "dist/subscriber/**/*.ts" : "src/subscriber/**/*.ts"
+      "dist/subscriber/**/*.ts"
    ],
    "cli": {
       "entitiesDir": "src/entity",
@@ -18,6 +18,3 @@ module.exports = {
       "subscribersDir": "src/subscriber"
    }
 }
-
-console.log(process.env.DEV_MODE);
-console.log(process.env.DEV_MODE = 0 ? "dist/entity/**/*.ts" : "src/entity/**/*.ts");
