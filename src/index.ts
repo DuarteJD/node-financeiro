@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import "reflect-metadata";
 import 'express-async-errors'
 import { createConnection } from 'typeorm'
@@ -31,5 +31,5 @@ app.use(routes)
 app.use(errorHandler)
 
 app.listen(process.env.PORT || 3333, () => {
-  console.log('Server started. ' + process.env.PORT);
+  console.log('Servidor iniciado. ' + process.env.PORT);
 })

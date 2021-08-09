@@ -1,3 +1,8 @@
+console.log(process.env.DATABASE_URL);
+console.log(process.env.DEV_MODE);
+console.log(process.env.DEV_MODE === 1 ? 'src/entity/**/*.ts' : 'dist/entity/**/*.js');
+console.log("=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=");
+
 module.exports = {
    "type": "postgres",
    "url" : process.env.DATABASE_URL,
