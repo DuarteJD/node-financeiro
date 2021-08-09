@@ -1,10 +1,13 @@
-import dotenv from 'dotenv';
 import "reflect-metadata";
 import 'express-async-errors'
+import dotenv from 'dotenv';
+import { createConnection } from 'typeorm';
 
-import express from "express";
+import express, { Application } from "express";
 
 dotenv.config();
+
+createConnection().catch(error => console.log('Erro de conexão ' + error));
 
 import routes from "./routes";
 import errorHandler from './erros/handler';
@@ -20,7 +23,7 @@ declare global {
   }
 }
 
-const app = express()
+const app : Application = express();
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

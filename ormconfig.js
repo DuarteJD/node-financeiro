@@ -4,6 +4,7 @@ console.log(process.env.DEV_MODE === 1 ? 'src/entity/**/*.ts' : 'dist/entity/**/
 console.log("=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=");
 
 module.exports = {
+   "name" : "default",
    "type": "postgres",
    "url" : process.env.DATABASE_URL,
    "synchronize": false,
