@@ -7,7 +7,7 @@
     ],
     "allowJs": true,
     "sourceMap": true,                              /* Generates corresponding '.map' file. */
-    "outDir": "./dist",                             /* Redirect output structure to the directory. */
+    "outDir": "dist",                             /* Redirect output structure to the directory. */
 
     /* Strict Type-Checking Options */
     "strict": false,                                 /* Enable all strict type-checking options. */
