@@ -28,8 +28,8 @@ export default class MovimentosController {
 
   public async resumo_categorias(request: Request, response: Response): Promise<Response> {
 
-    const dataI = request.query.data_inicial.toString()
-    const dataF = request.query.data_final.toString()
+    const dataI = request.query.data_inicial ? request.query.data_inicial.toString() : ''
+    const dataF = request.query.data_final ? request.query.data_final.toString() : ''
 
     const service = new RelatoriosServiceResumoCategorias()
 
