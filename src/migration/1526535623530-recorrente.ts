@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export default class recorrente1626535623530 implements MigrationInterface {
+export default class recorrente1526535623530 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
     await queryRunner.createTable(
@@ -13,6 +13,11 @@ export default class recorrente1626535623530 implements MigrationInterface {
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()',
+          },
+          {
+            name: 'empresa_id',
+            type: 'uuid',
+            isNullable: false,
           },
           {
             name: 'categoria_id',
@@ -37,7 +42,7 @@ export default class recorrente1626535623530 implements MigrationInterface {
             name: 'tipo',
             type: 'varchar',
             isNullable: false,
-            comment: 'D=Débito C=Crédito T=Transferência',
+            comment: 'D=Débito C=Crédito',
           },
           {
             name: 'descricao',
@@ -49,6 +54,12 @@ export default class recorrente1626535623530 implements MigrationInterface {
             type: 'int',
             isNullable: false,
           },
+          {
+            name: 'is_ativo',
+            type: 'boolean',
+            isNullable: false,
+            default: true
+          },
         ],
         foreignKeys: [
           {
@@ -56,8 +67,6 @@ export default class recorrente1626535623530 implements MigrationInterface {
             columnNames: ['conta_id'],
             referencedTableName: 'contas',
             referencedColumnNames: ['id'],
-            onUpdate: 'CASCADE',
-            onDelete: 'CASCADE',
           },
 
           {
@@ -65,8 +74,12 @@ export default class recorrente1626535623530 implements MigrationInterface {
             columnNames: ['categoria_id'],
             referencedTableName: 'categorias',
             referencedColumnNames: ['id'],
-            onUpdate: 'CASCADE',
-            onDelete: 'CASCADE',
+          },
+          {
+            name: 'fk_recorrentes_empresa_id',
+            columnNames: ['empresa_id'],
+            referencedTableName: 'empresas',
+            referencedColumnNames: ['id'],
           },
         ],
       }),
@@ -76,6 +89,7 @@ export default class recorrente1626535623530 implements MigrationInterface {
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey("recorrentes", 'fk_recorrente_conta_id');
     await queryRunner.dropForeignKey("recorrentes", 'fk_recorrente_categoria_id');
+    await queryRunner.dropForeignKey("recorrentes", 'fk_recorrentes_empresa_id');
     await queryRunner.dropTable('recorrentes');
   }
 }

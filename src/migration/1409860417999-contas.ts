@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class contas1609860417999 implements MigrationInterface {
+export class contas1409860417999 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
 
@@ -18,6 +18,11 @@ export class contas1609860417999 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'empresa_id',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
             name: 'nome',
             type: 'varchar',
             isNullable: false,
@@ -25,7 +30,14 @@ export class contas1609860417999 implements MigrationInterface {
           {
             name: 'saldo_inicial',
             type: 'decimal',
-            precision: 7,
+            precision: 11,
+            scale: 2,
+            default: 0,
+          },
+          {
+            name: 'limite_credito',
+            type: 'decimal',
+            precision: 11,
             scale: 2,
             default: 0,
           },
@@ -37,19 +49,30 @@ export class contas1609860417999 implements MigrationInterface {
           {
             name: 'is_cartao',
             type: 'boolean',
-            isNullable: false,
             default: false
           },
           {
-            name: 'melhor_dia_compra',
+            name: 'vencimento_fatura',
+            type: 'int',
+            isNullable: true,
+          },
+          {
+            name: 'fechamento_fatura',
             type: 'int',
             isNullable: true,
           },
           {
             name: 'is_ativo',
             type: 'boolean',
-            isNullable: false,
             default: true
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'fk_contas_empresa_id',
+            columnNames: ['empresa_id'],
+            referencedTableName: 'empresas',
+            referencedColumnNames: ['id'],
           },
         ],
       }),
@@ -57,6 +80,7 @@ export class contas1609860417999 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey("contas", 'fk_contas_empresa_id');
     await queryRunner.dropTable('contas');
   }
 }

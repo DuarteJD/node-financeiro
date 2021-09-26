@@ -17,6 +17,11 @@ export class saldocalculado1609860649312 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
+            name: 'empresa_id',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
             name: 'data',
             type: 'date',
             isNullable: false,
@@ -39,17 +44,21 @@ export class saldocalculado1609860649312 implements MigrationInterface {
             name: 'fk_saldocalculado_contas_id',
             columnNames: ['conta_id'],
             referencedTableName: 'contas',
+            referencedColumnNames: ['id']
+          },
+          {
+            name: 'fk_saldocalculado_empresa_id',
+            columnNames: ['empresa_id'],
+            referencedTableName: 'empresas',
             referencedColumnNames: ['id'],
-            onUpdate: 'CASCADE',
-            onDelete: 'CASCADE',
-          }
+          },
         ],
       }),
     );
   }
 
-
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey("saldocalculado", 'fk_saldocalculado_empresa_id');
     await queryRunner.dropTable('saldocalculado');
   }
 
