@@ -6,13 +6,17 @@ import {
 
 @Entity('categorias')
 export class Categorias {
+
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ length: 60 })
   nome: string;
 
-  @Column()
+  @Column('uuid')
+  empresa_id: string;
+
+  @Column({ length : 1})
   tipo: 'C' | 'D' | 'T';
 
   @Column({default: true })

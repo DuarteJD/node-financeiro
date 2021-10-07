@@ -4,8 +4,8 @@ import {
   Column,
 } from "typeorm";
 
-@Entity('saldocalculado')
-export class SaldosCalculado {
+@Entity('baixas_pagamento')
+export class BaixasPagamentos {
 
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -13,12 +13,15 @@ export class SaldosCalculado {
   @Column('uuid')
   empresa_id: string;
 
-  @Column('date')
+  @Column('uuid')
+  baixa_id: string;
+
+  @Column('timestamp with time zone')
   data: Date;
 
   @Column('uuid')
   conta_id: string;
 
-  @Column('decimal')
-  saldo: number;
+  @Column('double precision')
+  valor_pago: number;
 }

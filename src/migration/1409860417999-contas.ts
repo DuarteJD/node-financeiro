@@ -24,6 +24,7 @@ export class contas1409860417999 implements MigrationInterface {
           },
           {
             name: 'nome',
+            length: '60',
             type: 'varchar',
             isNullable: false,
           },
