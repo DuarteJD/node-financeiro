@@ -28,7 +28,7 @@ export class fluxos1632657988438 implements MigrationInterface {
               isNullable: false,
             },
             {
-              name: 'Descricao',
+              name: 'descricao',
               type: 'varchar',
               isNullable: false,
             },

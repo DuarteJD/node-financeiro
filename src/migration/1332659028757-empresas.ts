@@ -17,7 +17,7 @@ export class empresas1332659028757 implements MigrationInterface {
               default: 'uuid_generate_v4()',
             },
             {
-              name: 'Nome',
+              name: 'nome',
               type: 'varchar',
               length: '60',
               isNullable: false,

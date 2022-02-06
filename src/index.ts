@@ -18,6 +18,7 @@ declare global {
       usuario: {
         id: string;
         tipo: number;
+        empresa: string;
       }
     }
   }
